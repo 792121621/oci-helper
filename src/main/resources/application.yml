@@ -1,0 +1,47 @@
+server:
+  port: 8818
+
+# --------------------------------------- 用户自定义修改项 ------------------------------------
+# web登录管理员账号密码
+web:
+  account: yohann1
+  password: yohann1
+# --------------------------------------- 用户自定义修改项 ------------------------------------
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:oci-helper.db
+  sql:
+    init:
+      mode: always
+  ai:
+    openai:
+      api-key: sk-xxx
+      base-url: https://api.siliconflow.cn
+      chat:
+        options:
+          model: deepseek-ai/DeepSeek-R1-0528-Qwen3-8B
+
+mybatis-plus:
+  mapper-locations: classpath*:com/yohann/ocihelper/mapper/xml/*.xml
+
+logging:
+  pattern:
+    # console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %msg%n"
+  level:
+    com.oracle.bmc: error
+    c.o.b.h.c.j: error
+    org.telegram.telegrambots.longpolling.BotSession: off
+
+# 密钥文件存放目录（如果是docker部署则不用修改）
+oci-cfg:
+  boot-broadcast-url: https://backend.oci-helper.de5.net/api/boot
+  boot-broadcast-channel: https://backend.oci-helper.de5.net/api/notify
+#  key-dir-path: /app/oci-helper/keys
+#  key-dir-path: C:\Users\Yohann\Desktop
+  key-dir-path: C:\Users\yohann_fan\Desktop\test\oci-helper
