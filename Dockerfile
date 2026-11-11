@@ -7,12 +7,7 @@ ENV LANG=zh_CN.UTF-8 \
 
 # 安装依赖
 RUN set -eux; \
-    for i in 1 2 3; do \
-        apt-get update && break || { \
-            echo "APT update failed, retry $i/3"; \
-            sleep 5; \
-        }; \
-    done; \
+    apt-get update; \
     apt-get install -y --no-install-recommends \
         openssh-client \
         lsof \
