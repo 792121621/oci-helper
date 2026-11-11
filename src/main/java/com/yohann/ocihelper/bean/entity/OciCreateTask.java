@@ -1,0 +1,57 @@
+package com.yohann.ocihelper.bean.entity;
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * 
+ * @TableName oci_create_task
+ */
+@TableName(value ="oci_create_task")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class OciCreateTask implements Serializable {
+
+    @TableId
+    private String id;
+
+    private String userId;
+
+    private String ociRegion;
+
+    private Float ocpus;
+
+    private Float memory;
+
+    private Integer disk;
+
+    private String architecture;
+
+    private Integer interval;
+
+    private Integer createNumbers;
+
+    private String rootPassword;
+
+    private String operationSystem;
+
+    private LocalDateTime createTime;
+
+    /**
+     * Task paused flag: 0 = running, 1 = paused
+     */
+    private Integer paused;
+
+    @TableField(exist = false)
+    private static final long serialVersionUID = 1L;
+}
